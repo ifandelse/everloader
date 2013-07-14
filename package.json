@@ -1,0 +1,44 @@
+{
+    "name" : "everloader",
+    "description" : "A utility lib to help with saving/uploading files to Everlive (Telerik's Backend-as-a-Service platform)",
+    "version" : "0.1.0",
+    "homepage" : "https://github.com/ifandelse/everloader",
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/ifandelse/everloader.git"
+    },
+	"author" : "Jim Cowart (http://freshbrewedcode.com/jimcowart)",
+    "contributors": [
+        {
+            "name" : "Jim Cowart",
+            "email" : "jim@ifandelse.com",
+            "url" : "http://freshbrewedcode.com/jimcowart"
+        }
+    ],
+	"keywords" : [
+		"everlive",
+	    "BaaS",
+	    "file upload",
+	    "base64",
+	    "blob"
+	],
+    "bugs" : {
+        "email" : "jim@ifandelse.com",
+        "url" : "http://github.com/ifandelse/everloader.js/issues"
+   },
+	"directories" : { "lib" : "lib" },
+    "main" : "lib/everloader.js",
+	"dependencies" : {
+		"jquery" : ">=1.8"
+	},
+    "licenses" : [
+        {
+            "type" : "MIT",
+            "url" : "http://opensource.org/licenses/MIT"
+        },
+        {
+            "type" : "GPL",
+            "url" : "http://opensource.org/licenses/GPL-2.0"
+        }
+    ]
+}

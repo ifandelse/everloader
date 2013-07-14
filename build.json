@@ -1,0 +1,15 @@
+{
+	"anvil.uglify" : {
+		"all" : true
+	},
+	"httpPaths" : {
+		"/"             : "./"
+	},
+	"anvil.jshint" : {
+		"all" : true
+	},
+	"output" : {
+		"full" : "lib"
+	},
+	"dependencies" : [ "anvil.uglify", "anvil.jshint" ]
+}
