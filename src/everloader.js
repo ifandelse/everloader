@@ -23,13 +23,18 @@
 		// Everlive API Key
 		apiKey : "",
 
-		// Supported file types for upload
-		mimeTypes : {
-			jpg : "image/jpeg",
-			jpeg : "image/jpeg",
-			png : "image/png",
-			gif : "image/gif"
-		},
+		/* Allowed mime types for upload.
+		   If it's empty, anything is allowed.
+		   For example, to allow only jpeg, png
+		   and gifs:
+				mimeTypes : [
+					"image/jpeg",
+					"image/jpeg",
+					"image/png",
+					"image/gif"
+				],
+		*/
+		mimeTypes : [],
 
 		// Collective time limit on the uploads
 		timeout : 60000,
@@ -62,12 +67,11 @@
 		getImageFileObject : function ( input, cb ) {
 			var name = input.name;
 			var ext = name.substr( name.lastIndexOf( '.' ) + 1 ).toLowerCase();
-			var mimeType = this.mimeTypes[ext];
-			if ( mimeType ) {
+			if ( !_config.mimeTypes.length || _config.mimeTypes.indexOf(input.type) ) {
 				this.getBase64ImageFromInput( input, function ( base64 ) {
 					var res = {
 						"Filename" : name,
-						"ContentType" : mimeType,
+						"ContentType" : input.type,
 						"base64" : base64.substr( base64.lastIndexOf( 'base64,' ) + 7 )
 					};
 					cb( null, res );
@@ -154,7 +158,11 @@
 				var handler = function () {
 					toProcess--;
 					if ( !toProcess ) {
-						dfd.resolve( result );
+						if (result.errors._count === 0) {
+							dfd.resolve( result );
+						} else {
+							dfd.reject( result );
+						}
 					}
 				};
 				setTimeout( function () {
